@@ -1,9 +1,13 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAMES HERE"
+title: "World Development Indicators"
+author: "Priyanka Balakumar, Utsav Vachhani, Eklavya Jain"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
 # Introduction
+
+We’re using the World Development Indicators dataset from the World Bank, which can be found [here](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators). The World Bank is an international financial institution with 189 member countries with the primary goal of reducing poverty in developing countries. They do so by issuing loans to developing world countries, NGOs, and environmental groups. Most recently, the World Bank allocated close to $10 Billion to supply covid-19 vaccines to 78 “low and middle-income” countries. 
+
+The dataset chosen for our purpose consists of the most current global development data available publicly. It includes national, regional, and global estimates of different human development indicators of various countries from 1960 to 2021. We chose this dataset because we are interested in understanding the underlying trends and progress of different countries’ developments through the years. Specifically, we would like to identify the economic, social, and environmental indicators that drive the development of a country. The proposed analysis can help the concerned in identifying the areas of development for specific countries in order to facilitate a reduction in poverty. 
 

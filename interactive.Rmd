@@ -1,3 +1,35 @@
 # Interactive component
 
+```{r eval = FALSE, include = FALSE}
 
+# select a subset of countries and compare their GDP per Capita over different years
+library(dplyr)
+write.csv(df.long %>%
+            filter(Year == 2020 &
+                     Indicator.Code == 'NY.GDP.PCAP.CD') %>%
+            mutate(value = Value,
+                   country = Country.Name) %>%
+            select(country, value) %>%
+            na.omit() %>%
+            slice_sample(n = 50),
+          'd3_data/interactive_data.csv', 
+          row.names = FALSE)
+```
+
+
+<iframe src="interactive.html" width="650" height="700"></iframe>
+
+
+Since, the number of countries are too large in the dataset, we chose to sample a few of them and compare their GDP per Capita. This indicator is useful for comparing the quality of life between any two countries. 
+
+We induce interactivity in the following ways:
+
+1. On hovering over the bars, one will be able to see the country name along with its GDP per Capita rounded off to the nearest integer. 
+2. On checking the button at the bottom of the screen, one can view the sorted version of the sample. This might be useful to analyze which countries are better than the others. Since this visualization is drawn from a sample of data, it doesn't tell anything about absolute values of the GDP per Capita, but does help in comparing any two nations. 
+
+After doing this exercise, we realized the true power of D3. There is so much more that we can do, and we can leverage from this amazing library. For example, we could have displayed various time series, i.e., how GDP per Capita has evolved over the years for a selected country. We can add or remove any country which is not significant to the objective. Further, this could help in observing yearly trends and relating them to the persisting economic factors.
+
+
+The standalone html file can be viewed [here](interactive.html){target="_blank"}. Please refresh if you don't see the bars initially. 
+
+Please find below the demo video on my local host [here](https://drive.google.com/file/d/1mNNpt2VXhuPtbNTsrwOmp-j5iZx-zXvR/view?usp=sharing).

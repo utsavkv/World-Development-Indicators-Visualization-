@@ -2,5 +2,38 @@
 
 ## Research topic
 
+World Development Indicators comprises of data about the historic levels of human development of countries in a global landscape through the years 1960 to 2021. We want to analyze this dataset and map out various trends present in the data. Some of them are listed below:
+
+-   We would want to evaluate different countries based on numerous economic, social, and environmental indicators for a given year, or check the progress of a single country over 4 decades.
+
+-   We would want to observe trends of the indicators as well. For instance, the global economy has risen by a factor of 90 in the last 6 decades. It is possible that this change results in an increasing graph of an economic indicator as opposed to any actual development.
+
+-   We could analyze $CO_2$ emissions trends across countries and the specific sectors that contribute most to emissions.
+
+-   We could propose a way to track agricultural and rural development by analyzing the trend of irrigated land over the years and the livestock production index.
+
+-   We also have data for different age groups for all indicators. We can use such data to judge the effectiveness/contribution of indicators like education and gender in the overall development of a country.
+
+-   We can visualize how advances in healthcare (through indicators like mortality rates, reproductive health, etc.) have contributed to the development of the countries, and how the development of a country has improved the healthcare situation.
+
+These are some of the factors which we can visualize and give concrete conclusions about.
+
 ## Data availability
 
+We have collected the data from the World Bank's data repository. The original source of their data is primarily the latest version of reports gathered by the Bank's country management units. The World Bank's wide range of members across different regions in the world allows for an accurate representation of progress from 1960 to current time. Most of the data is collected through the statistical systems of member countries, and the indicators are gathered through surveys or interviews with local firms [(Ref)](https://datahelpdesk.worldbank.org/knowledgebase/articles/906531-methodologies). At the World Bank, the Development Data Group guides the data collection and compilation process to ensure that the data is of the highest quality and integrity. This group utilizes internationally accepted standards which results in consistent and reliable sources of data.
+
+The data can be accessed using an [API](https://datahelpdesk.worldbank.org/knowledgebase/articles/898599-indicator-api-queries) available without any authentication requirements. The dataset can also be downloaded as a zip file in .csv format from the [World Bank Website](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators). We use the downloadable version of data as it is readily accessible, can be imported into R with ease, and has a quarterly update frequency which allows us to update the data file every quarter manually. We further observe that the data is not arranged in a tidy form for the purpose of plotting in ggplot2 (i.e., the data is present in a long format). The World Development Indicators dataset gets updated quarterly; the latest update was in September 2022 [(Ref)](https://datahelpdesk.worldbank.org/knowledgebase/articles/906522). In the latest release, several health indicators such as immunization rates, undernourishment, and birth registrations were updated. In addition, there were also updates on world values for intentional homicides, food insecurity, and high-technology exports.
+
+Furthermore, the data is distributed among six files in the zip.
+
+-   WDICountry.csv: Information about the countries and their attributes
+
+-   WDICountry-Series.csv: Description of all the indicators present for all countries
+
+-   WDIData.csv: Data present in long format consisting of indicator values corresponding to each country over multiple years
+
+-   WDIFootNote.csv: Additional descriptive information about different pairs of countries and indicators
+
+-   WDISeries.csv: Description of Indicators, i.e., definition, periodicity, related indicators, statistical methodology of collection, etc.
+
+-   WDISeries-Time.csv: Description of time series indicator codes.

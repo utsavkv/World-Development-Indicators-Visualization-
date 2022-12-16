@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        .bar {
+            fill: #6565f2;
+        }
+
+        .highlight {
+            fill: rgb(253, 177, 34);
+        }
+</style>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <p>Below is an interactive visualization of GDP per Capita of a selection of countries. The interactivity is induced in two ways. One is by hovering over the bars, and the second is clicking the button beneath the plot which sorts the values in descending order.</p>
+    <div class="div">
+        <svg width="600" height="500"></svg>
+    </div>
+
+    <label style="font-size: 15px;" ><input type = "checkbox" > Sort by GDP per Capita</label>
+    <script>
+    
+        var svg = d3.select("svg"),
+            margin = 150,
+            width = svg.attr("width") - margin,
+            height = svg.attr("height") - margin;
+    
+        svg.append("text")
+           .attr("transform", "translate(100,0)")
+           .attr("x", 50)
+           .attr("y", 50)
+           .attr("font-size", "16px")
+           .text("GDP Per Capita for Selected Countries")
+    
+        var x = d3.scaleBand().range([0, width]).padding(0.4),
+            y = d3.scaleLinear().range([height, 0]);
+    
+        var g = svg.append("g")
+                .attr("transform", "translate(" + 100 + "," + 100 + ")");
+    
+    
+        const dataset = [{'country': 'Spain', 'value': 27056.4217512166}, {'country': 'Morocco', 'value': 3058.69165039063}, {'country': 'Oman', 'value': 14485.3861157973}, {'country': 'Barbados', 'value': 16318.7481052701}, {'country': 'Australia', 'value': 51680.3165229438}, {'country': 'Sweden', 'value': 52300.2061994993}, {'country': 'Canada', 'value': 43258.2638715601}, {'country': 'Virgin Islands (U.S.)', 'value': 39552.1685953523}, {'country': 'Namibia', 'value': 4157.01950619148}, {'country': 'Senegal', 'value': 1462.80816888438}, {'country': 'Cuba', 'value': 9477.85287326771}, {'country': 'Latin America & Caribbean', 'value': 7270.70358438419}, {'country': 'Congo, Dem. Rep.', 'value': 543.950392515803}, {'country': 'Slovenia', 'value': 25489.5002284083}, {'country': 'French Polynesia', 'value': 20182.5845029164}, {'country': 'St. Vincent and the Grenadines', 'value': 7860.82135437107}, {'country': 'Germany', 'value': 46252.6893044892}, {'country': 'Switzerland', 'value': 87100.4148213751}, {'country': 'Bosnia and Herzegovina', 'value': 6082.36673041923}, {'country': 'Singapore', 'value': 60729.4503486794}, {'country': 'Sub-Saharan Africa (excluding high income)', 'value': 1500.85264844909}, {'country': 'Middle East & North Africa (IDA & IBRD countries)', 'value': 3189.79540382642}, {'country': 'Hungary', 'value': 16075.9732662505}, {'country': 'Least developed countries: UN classification', 'value': 1099.20156053236}, {'country': 'United States', 'value': 63027.6795267153}, {'country': 'Comoros', 'value': 1407.40927043446}, {'country': 'European Union', 'value': 34191.8282529314}, {'country': 'Cameroon', 'value': 1537.13021832773}, {'country': 'Nauru', 'value': 10580.2681883905}, {'country': 'Fiji', 'value': 5102.84392924983}, {'country': 'Botswana', 'value': 6348.83231765626}, {'country': 'Nicaragua', 'value': 1900.04359427589}, {'country': 'Solomon Islands', 'value': 2250.6011638607}, {'country': 'Maldives', 'value': 6924.10574465625}, {'country': 'Benin', 'value': 1291.04097215441}, {'country': 'India', 'value': 1933.1010689481}, {'country': 'Central Europe and the Baltics', 'value': 16197.2993493424}, {'country': 'Eswatini', 'value': 3434.72179830295}, {'country': 'Samoa', 'value': 4068.07886505264}, {'country': 'United Kingdom', 'value': 41098.0786527828}, {'country': 'Guatemala', 'value': 4603.33964340645}, {'country': 'Lesotho', 'value': 1050.63163365737}, {'country': 'Argentina', 'value': 8585.69474249794}, {'country': 'Middle East & North Africa', 'value': 6688.08727950427}, {'country': 'Europe & Central Asia (excluding high income)', 'value': 7435.16074761498}, {'country': 'Chile', 'value': 13220.5707580419}, {'country': 'Gabon', 'value': 6881.71422533521}, {'country': 'Greece', 'value': 17647.2326882744}, {'country': 'Pre-demographic dividend', 'value': 1349.15316019379}, {'country': 'Mongolia', 'value': 4060.95051770038}];
+
+    
+            
+        dataset.forEach((d, i) => d.order = i);
+        x.domain(dataset.map(function(d) { return d.country; }));
+        y.domain([0, d3.max(dataset, function(d) { return +d.value; })]);
+        
+        g.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x).tickFormat(''))
+            .append("text")
+            .attr("y", height - 320)
+            .attr("x", width - 50)
+            .attr("font-size", "14px")
+            .attr("text-anchor", "end")
+            .attr("fill", "black")
+            .text("Country");
+
+        g.append("g")
+            .call(d3.axisLeft(y).tickFormat(function(d){
+                return "$" + d;
+            }).ticks(10))
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 3)
+            .attr("dy", "-5.1em")
+            .attr("text-anchor", "end")
+            .attr("fill", "black")
+            .attr("font-size", "14px")
+            .text("GDP per Capita");
+
+        g.selectAll(".bar")
+            .data(dataset)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .on("mouseover", onMouseOver) //Add listener for the mouseover event
+            .on("mouseout", onMouseOut)   //Add listener for the mouseout event
+            .attr("x", function(d) { return x(d.country); })
+            .attr("y", function(d) { return y(d.value); })
+            .attr("width", x.bandwidth())
+            .transition()
+            .ease(d3.easeLinear)
+            .duration(100)
+            .delay(function (d, i) {
+                return i * 10;
+            })
+            .attr("height", function(d) { return height - y(d.value); });
+
+            //mouseover event handler function
+            function onMouseOver(d, i) {
+                d3.select(this).attr('class', 'highlight');
+                d3.select(this)
+                .transition()     // adds animation
+                .duration(400)
+                .attr('width', x.bandwidth() + 2)
+                .attr("y", function(d) { return y(d.value) - 10; })
+                .attr("height", function(d) { return height - y(d.value) + 10; });
+        
+                g.append("text")
+                .attr('class', 'val') 
+                .attr('x', function() {
+                    return x(d.country) - 50;
+                })
+                .attr('y', function() {
+                    return  height + 20;
+                })
+                .text(function() {
+                    return [d.country + ': $' + Math.round(d.value, 9)];  // Value of the text
+                }).attr("font-size", "10px");
+            }
+        
+        //mouseout event handler function
+        function onMouseOut(d, i) {
+            // use the text label class to remove label on mouseout
+            d3.select(this).attr('class', 'bar');
+            d3.select(this)
+              .transition()     // adds animation
+              .duration(400)
+              .attr('width', x.bandwidth())
+              .attr("y", function(d) { return y(d.value); })
+              .attr("height", function(d) { return height - y(d.value); });
+    
+            d3.selectAll('.val')
+              .remove()
+
+        }
+
+        d3.select("input")
+          .on("change", toggleSort);
+
+        function toggleSort(){
+
+            if (this.checked){
+                // Sort by GDP
+                sortComparer = function(a, b){
+                    return b.value - a.value;
+                }
+            } else {
+                // Sort by original (random) order
+                sortComparer = function(a, b){
+                    return a.order - b.order;
+                }
+                
+            }
+
+            dataset.sort(sortComparer);
+            var countryOrder = dataset.map(function(d){
+                return d.country;
+            });
+
+            
+            x.domain(countryOrder);
+            svg.transition().duration(1000)
+               .selectAll('rect')
+               .attr("x", function(d){
+                return x(d.country);
+               });
+            
+            
+        }
+</script>
+</body>
+</html>

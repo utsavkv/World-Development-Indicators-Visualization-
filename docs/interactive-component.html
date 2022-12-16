@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Interactive component | YOUR TITLE HERE</title>
-  <meta name="description" content="Chapter 5 Interactive component | YOUR TITLE HERE" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <title>Chapter 5 Interactive component | World Development Indicators</title>
+  <meta name="description" content="Chapter 5 Interactive component | World Development Indicators" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Interactive component | YOUR TITLE HERE" />
+  <meta property="og:title" content="Chapter 5 Interactive component | World Development Indicators" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Interactive component | YOUR TITLE HERE" />
+  <meta name="twitter:title" content="Chapter 5 Interactive component | World Development Indicators" />
   
   
   
 
-<meta name="author" content="YOUR NAMES HERE" />
+<meta name="author" content="Priyanka Balakumar, Utsav Vachhani, Eklavya Jain" />
 
 
-<meta name="date" content="2022-10-22" />
+<meta name="date" content="2022-12-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +69,7 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">SHORT TITLE HERE</a></li>
+<li><a href="./">WDI VIZ</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
@@ -98,7 +98,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YOUR TITLE HERE</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">World Development Indicators</a>
           </h1>
         </div>
 
@@ -108,6 +108,17 @@
             <section class="normal" id="section-">
 <div id="interactive-component" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Interactive component<a href="interactive-component.html#interactive-component" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<iframe src="interactive.html" width="650" height="700">
+</iframe>
+<p>Since, the number of countries are too large in the dataset, we chose to sample a few of them and compare their GDP per Capita. This indicator is useful for comparing the quality of life between any two countries.</p>
+<p>We induce interactivity in the following ways:</p>
+<ol style="list-style-type: decimal">
+<li>On hovering over the bars, one will be able to see the country name along with its GDP per Capita rounded off to the nearest integer.</li>
+<li>On checking the button at the bottom of the screen, one can view the sorted version of the sample. This might be useful to analyze which countries are better than the others. Since this visualization is drawn from a sample of data, it doesn’t tell anything about absolute values of the GDP per Capita, but does help in comparing any two nations.</li>
+</ol>
+<p>After doing this exercise, we realized the true power of D3. There is so much more that we can do, and we can leverage from this amazing library. For example, we could have displayed various time series, i.e., how GDP per Capita has evolved over the years for a selected country. We can add or remove any country which is not significant to the objective. Further, this could help in observing yearly trends and relating them to the persisting economic factors.</p>
+<p>The standalone html file can be viewed <a href="interactive.html" target="_blank">here</a>. Please refresh if you don’t see the bars initially.</p>
+<p>Please find below the demo video on my local host <a href="https://drive.google.com/file/d/1mNNpt2VXhuPtbNTsrwOmp-j5iZx-zXvR/view?usp=sharing">here</a>.</p>
 
 </div>
             </section>
@@ -147,7 +158,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/edit/main/interactive.Rmd",
+"link": "https://github.com/priyankab23/EDAV_project/edit/main/interactive.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -155,7 +166,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/blob/main/interactive.Rmd",
+"link": "https://github.com/priyankab23/EDAV_project/blob/main/interactive.Rmd",
 "text": null
 },
 "download": null,

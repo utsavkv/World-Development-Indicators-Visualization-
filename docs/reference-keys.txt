@@ -9,3 +9,15 @@ missing-value-analysis
 results
 interactive-component
 conclusion
+dataset-summary
+missing-values-by-country
+missing-values-by-indicator
+missing-values-by-year
+social-indicators
+mortality-rates
+life-expectancy
+literacy-rates
+gross-domestic-product
+income-disparity
+environmental-indicators
+water-supply-and-sanitation

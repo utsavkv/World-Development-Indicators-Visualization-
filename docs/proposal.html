@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Proposal | YOUR TITLE HERE</title>
-  <meta name="description" content="Chapter 2 Proposal | YOUR TITLE HERE" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <title>Chapter 2 Proposal | World Development Indicators</title>
+  <meta name="description" content="Chapter 2 Proposal | World Development Indicators" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Proposal | YOUR TITLE HERE" />
+  <meta property="og:title" content="Chapter 2 Proposal | World Development Indicators" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Proposal | YOUR TITLE HERE" />
+  <meta name="twitter:title" content="Chapter 2 Proposal | World Development Indicators" />
   
   
   
 
-<meta name="author" content="YOUR NAMES HERE" />
+<meta name="author" content="Priyanka Balakumar, Utsav Vachhani, Eklavya Jain" />
 
 
-<meta name="date" content="2022-10-22" />
+<meta name="date" content="2022-12-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +69,7 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">SHORT TITLE HERE</a></li>
+<li><a href="./">WDI VIZ</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
@@ -98,7 +98,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YOUR TITLE HERE</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">World Development Indicators</a>
           </h1>
         </div>
 
@@ -110,9 +110,30 @@
 <h1><span class="header-section-number">Chapter 2</span> Proposal<a href="proposal.html#proposal" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="research-topic" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Research topic<a href="proposal.html#research-topic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>World Development Indicators comprises of data about the historic levels of human development of countries in a global landscape through the years 1960 to 2021. We want to analyze this dataset and map out various trends present in the data. Some of them are listed below:</p>
+<ul>
+<li><p>We would want to evaluate different countries based on numerous economic, social, and environmental indicators for a given year, or check the progress of a single country over 4 decades.</p></li>
+<li><p>We would want to observe trends of the indicators as well. For instance, the global economy has risen by a factor of 90 in the last 6 decades. It is possible that this change results in an increasing graph of an economic indicator as opposed to any actual development.</p></li>
+<li><p>We could analyze <span class="math inline">\(CO_2\)</span> emissions trends across countries and the specific sectors that contribute most to emissions.</p></li>
+<li><p>We could propose a way to track agricultural and rural development by analyzing the trend of irrigated land over the years and the livestock production index.</p></li>
+<li><p>We also have data for different age groups for all indicators. We can use such data to judge the effectiveness/contribution of indicators like education and gender in the overall development of a country.</p></li>
+<li><p>We can visualize how advances in healthcare (through indicators like mortality rates, reproductive health, etc.) have contributed to the development of the countries, and how the development of a country has improved the healthcare situation.</p></li>
+</ul>
+<p>These are some of the factors which we can visualize and give concrete conclusions about.</p>
 </div>
 <div id="data-availability" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Data availability<a href="proposal.html#data-availability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We have collected the data from the World Bank’s data repository. The original source of their data is primarily the latest version of reports gathered by the Bank’s country management units. The World Bank’s wide range of members across different regions in the world allows for an accurate representation of progress from 1960 to current time. Most of the data is collected through the statistical systems of member countries, and the indicators are gathered through surveys or interviews with local firms <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/906531-methodologies">(Ref)</a>. At the World Bank, the Development Data Group guides the data collection and compilation process to ensure that the data is of the highest quality and integrity. This group utilizes internationally accepted standards which results in consistent and reliable sources of data.</p>
+<p>The data can be accessed using an <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/898599-indicator-api-queries">API</a> available without any authentication requirements. The dataset can also be downloaded as a zip file in .csv format from the <a href="https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators">World Bank Website</a>. We use the downloadable version of data as it is readily accessible, can be imported into R with ease, and has a quarterly update frequency which allows us to update the data file every quarter manually. We further observe that the data is not arranged in a tidy form for the purpose of plotting in ggplot2 (i.e., the data is present in a long format). The World Development Indicators dataset gets updated quarterly; the latest update was in September 2022 <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/906522">(Ref)</a>. In the latest release, several health indicators such as immunization rates, undernourishment, and birth registrations were updated. In addition, there were also updates on world values for intentional homicides, food insecurity, and high-technology exports.</p>
+<p>Furthermore, the data is distributed among six files in the zip.</p>
+<ul>
+<li><p>WDICountry.csv: Information about the countries and their attributes</p></li>
+<li><p>WDICountry-Series.csv: Description of all the indicators present for all countries</p></li>
+<li><p>WDIData.csv: Data present in long format consisting of indicator values corresponding to each country over multiple years</p></li>
+<li><p>WDIFootNote.csv: Additional descriptive information about different pairs of countries and indicators</p></li>
+<li><p>WDISeries.csv: Description of Indicators, i.e., definition, periodicity, related indicators, statistical methodology of collection, etc.</p></li>
+<li><p>WDISeries-Time.csv: Description of time series indicator codes.</p></li>
+</ul>
 
 </div>
 </div>
@@ -153,7 +174,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/edit/main/proposal.Rmd",
+"link": "https://github.com/priyankab23/EDAV_project/edit/main/proposal.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -161,7 +182,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/blob/main/proposal.Rmd",
+"link": "https://github.com/priyankab23/EDAV_project/blob/main/proposal.Rmd",
 "text": null
 },
 "download": null,
@@ -176,6 +197,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
